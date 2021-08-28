@@ -32,4 +32,11 @@ public class TestCalculator {
 	public void newLineSumReturn() {
 		assertEquals(calculator.add("2\n3"), 5);
 	}
+	@Test
+	public void threeValueDelimitedReturn() {
+		assertEquals(calculator.add("2\n3,3"), 8);
+	}@Test
+	public void moreThenTwoValueReturn() {
+		assertEquals(calculator.add("2\n3,3\n2"), 10);
+	}
 }

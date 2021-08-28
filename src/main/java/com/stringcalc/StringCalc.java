@@ -11,7 +11,7 @@ public class StringCalc {
 		if(inp.length()==1) {
 			return stringToInt(inp);
 		} else {
-			return sumOfTwoNum(integers[0],integers[1]);
+			return sumOfTwoNum(integers);
 		}
 	}
 	
@@ -23,7 +23,12 @@ public class StringCalc {
 	private int stringToInt(String inp) {
 		return Integer.parseInt(inp);
 	}
-	private int sumOfTwoNum(String num1, String num2) {
-		return Integer.parseInt(num1) + Integer.parseInt(num2);
+	private int sumOfTwoNum(String[] integers) {
+		int sum =0;
+		for(String curr: integers) {
+			sum += Integer.parseInt(curr);
+			
+		}
+		return sum;
 	}
 }
