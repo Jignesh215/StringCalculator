@@ -2,8 +2,9 @@ package com.stringcalc;
 
 public class StringCalc {
 
-	public int calculate(String inp) {
-		String[] integers = inp.split(",");
+	private final String  deli = ",|\n";
+	public int add(String inp) {
+		String[] integers = inp.split(deli);
 		if(isEmpty(inp)) {
 			return 0;
 		}
@@ -13,6 +14,8 @@ public class StringCalc {
 			return sumOfTwoNum(integers[0],integers[1]);
 		}
 	}
+	
+	
 	private boolean isEmpty(String inp) {
 		return inp.isEmpty();
 	}

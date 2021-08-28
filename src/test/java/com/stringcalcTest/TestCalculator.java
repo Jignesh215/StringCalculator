@@ -17,15 +17,19 @@ public class TestCalculator {
 	}
 	
 	@Test
-	public void emptyReturn() {
-		assertEquals(calculator.calculate(""),0);
+	public void emptyValueReturn() {
+		assertEquals(calculator.add(""),0);
 	}
 	@Test
 	public void singleValueReturn() {
-		assertEquals(calculator.calculate("1"),1);
+		assertEquals(calculator.add("1"),1);
 	}
 	@Test
 	public void doubleValueReturn() {
-		assertEquals(calculator.calculate("4,5"), 9);
+		assertEquals(calculator.add("4,5"), 9);
+	}
+	@Test
+	public void newLineSumReturn() {
+		assertEquals(calculator.add("2\n3"), 5);
 	}
 }
