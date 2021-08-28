@@ -37,7 +37,7 @@ public class StringCalc {
 			
 		for(String curr: integers) {
 			if(stringToInt(curr)<0) {
-				throw new Exception("Negetive Input !" +curr);
+				throw new Exception("Negetive Input !" +curr+ "Not Allowed");
 			}
 		}
 		}
