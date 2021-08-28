@@ -47,5 +47,10 @@ public class TestCalculator {
 	@Test(expected = Exception.class)
 	public void negInputExceptionReturn() throws Exception {
 		calculator.add("-1");
+		assertEquals(calculator.add("10;20,-10,10"), 40);
+	}
+	@Test
+	public void ignoreGreaterThan1000() throws Exception {
+		assertEquals(calculator.add("10;20,2000"), 30);
 	}
 }

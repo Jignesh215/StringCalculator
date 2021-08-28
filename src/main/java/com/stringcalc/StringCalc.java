@@ -28,6 +28,9 @@ public class StringCalc {
 		
 		int sum =0;
 		for (String curr : integers){
+			if(stringToInt(curr)>1000 || stringToInt(curr) < 0 ) {
+				continue;
+			}
 			sum += Integer.parseInt(curr);
 			
 		}
