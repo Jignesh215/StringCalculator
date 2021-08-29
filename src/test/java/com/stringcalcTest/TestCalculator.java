@@ -7,6 +7,8 @@ import org.junit.Test;
 import com.stringcalc.StringCalc;
 
 
+
+
 public class TestCalculator {
 
 	private StringCalc calculator;
@@ -40,17 +42,29 @@ public class TestCalculator {
 	public void moreThenThreeValueReturn() throws Exception {
 		assertEquals(calculator.add("2\n3,3,2"), 10);
 	}
+	
 	@Test
-	public void multipleDelimeterReturn() throws Exception {
-		assertEquals(calculator.add("2\n3;3,2"), 10);
-	}
-	@Test(expected = Exception.class)
 	public void negInputExceptionReturn() throws Exception {
-		calculator.add("-1");
-		assertEquals(calculator.add("10;20,-10,10"), 40);
+		try {
+			calculator.add("-1,2");
+		}
+		catch (IllegalArgumentException e){
+			assertEquals(e.getMessage(), "Negatives not allowed: -1");
+		}
+
+		try {
+			calculator.add("2,-4,3,-5");
+		}
+		catch (IllegalArgumentException e){
+			assertEquals(e.getMessage(), "Negatives not allowed: -4,-5");
+		}
 	}
 	@Test
-	public void ignoreGreaterThan1000() throws Exception {
-		assertEquals(calculator.add("10;20,2000"), 30);
+	public void ignoreGreaterThan1000Return() throws Exception {
+		assertEquals(calculator.add("10,20,2000"), 30);
+	}
+	 @Test
+	 public void ignoreMultipleDelimitersReturn() throws Exception{
+	   	assertEquals(calculator.add("//;\n1;2"),3);
 	}
 }
