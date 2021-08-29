@@ -6,9 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 import com.stringcalc.StringCalc;
 
-
-
-
 public class TestCalculator {
 
 	private StringCalc calculator;
@@ -59,12 +56,23 @@ public class TestCalculator {
 			assertEquals(e.getMessage(), "Negatives not allowed: -4,-5");
 		}
 	}
+	
 	@Test
 	public void ignoreGreaterThan1000Return() throws Exception {
 		assertEquals(calculator.add("10,20,2000"), 30);
 	}
-	 @Test
-	 public void ignoreMultipleDelimitersReturn() throws Exception{
-	   	assertEquals(calculator.add("//;\n1;2"),3);
-	}
+	 
+	@Test
+    public void anyLengthDelimitersReturn() throws Exception{
+    	assertEquals(6, calculator.multDelimiters("“//[***]\n1***2***3”"));
+    }
+    @Test
+    public void allowMultipleDelimiters() throws Exception{
+    	assertEquals(6, calculator.multDelimiters("“//[*][%]\\n1*2%3”"));
+    }
+    @Test
+    public void lengthLongerThenOneCharacter() throws Exception{
+    	assertEquals(9, calculator.multDelimiters("“//[**][%%]\\n1**5%%3”"));
+    }
+	
 }

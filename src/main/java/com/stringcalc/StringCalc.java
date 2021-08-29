@@ -2,6 +2,7 @@ package com.stringcalc;
 
 public class StringCalc {
 
+	 int count=0;
 	
 	public int add(String inp) throws Exception {
 		
@@ -10,7 +11,7 @@ public class StringCalc {
 		}
 		else{
 			String delimiter = ",";
-			if(inp.matches("//(.*)\n(.*)")){
+			if(inp.matches("//(.*)\n(.*)“//[*][%]\\n%”")){
 				delimiter = Character.toString(inp.charAt(2));
 				inp = inp.substring(4);
 			}
@@ -18,8 +19,22 @@ public class StringCalc {
 			String numList[] = splitNum(inp, delimiter + "|\n");
 			return sumOfTwoNum(numList);
 		}
-	}
 	
+	}
+	public int multDelimiters(String str) {
+		int sum=0,num;
+		char charactr;
+		
+		for (int i = 0; i < str.length(); i++) {
+			
+                charactr = str.charAt(i);
+                if(Character.isDigit(charactr)) {
+                	num = Character.getNumericValue(charactr);
+                	sum +=num;
+                }
+		}
+		return sum;
+	}
 	
 	private boolean isEmpty(String inp) {
 		return inp.isEmpty();
